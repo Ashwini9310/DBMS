@@ -61,7 +61,13 @@ SELECT * FROM BankCustomer;
 SELECT * FROM Depositor;
 SELECT * FROM Loan;
 
-SELECT * FROM BankCustomer WHERE customer_name IN(SELECT customer_name FROM depositor group by customer_name having COUNT(customer_name)>=2);
+SELECT * 
+FROM BankCustomer
+WHERE customer_name IN(
+	SELECT customer_name
+	FROM depositor 
+	group by customer_name 
+	having COUNT(customer_name)>=2);
 
 SELECT d.customer_name 
 FROM BankAccount a, Depositor d, Branch b 
